@@ -17,6 +17,8 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { RegistroVentasProductosComponent } from './registro-ventas-productos/registro-ventas-productos.component';
 import { ReporteResumidoComponent } from './reporte-resumido/reporte-resumido.component';
 import { ReporteDetalladoComponent } from './reporte-detallado/reporte-detallado.component';
+import { ConfirmationDialog } from './shared/confirm-delete.component';
+import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ReporteDetalladoComponent } from './reporte-detallado/reporte-detallado
     ClientesComponent,
     RegistroVentasProductosComponent,
     ReporteResumidoComponent,
-    ReporteDetalladoComponent
+    ReporteDetalladoComponent,
+    ConfirmationDialog,
+    CrearProductoComponent
   ],
   imports: [
     BrowserModule,

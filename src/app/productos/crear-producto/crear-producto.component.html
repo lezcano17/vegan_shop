@@ -1,0 +1,14 @@
+<div class="container">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
+      <mat-form-field class="form-element">
+         <input matInput placeholder="Codigo" formControlName="codigo" required>
+         <input matInput placeholder="Nombre" formControlName="nombre" required>
+         <input matInput placeholder="Precio Venta" formControlName="precioVenta" required>
+         <input matInput placeholder="Existencia" formControlName="existencia" required>
+      </mat-form-field>
+    
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Agregar</button>
+      </div>
+    </form>
+</div>

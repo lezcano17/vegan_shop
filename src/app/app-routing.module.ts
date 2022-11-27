@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
+import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
 import { ProductosComponent } from './productos/productos.component';
 import { RegistroVentasProductosComponent } from './registro-ventas-productos/registro-ventas-productos.component';
 import { ReporteDetalladoComponent } from './reporte-detallado/reporte-detallado.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'reporte-resumido',
     component: ReporteResumidoComponent,
+  },
+  {
+    path: 'crear-producto',
+    component: CrearProductoComponent,
   },
 ];
 
