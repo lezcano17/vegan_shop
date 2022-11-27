@@ -1,1 +1,32 @@
+<app-crear-cliente (newElement)="addElement($event)"></app-crear-cliente>
+<hr>
+<div class="container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="ruc">
+            <th mat-header-cell *matHeaderCellDef> RUC </th>
+            <td mat-cell *matCellDef="let cliente"> {{cliente.ruc}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombreApellido">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let cliente"> {{cliente.nombreApellido}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let cliente">{{cliente.email}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let cliente">
+                <button mat-button (click)="openDialog(cliente)">Eliminar</button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons>
+    </mat-paginator>
+</div>
 <p>Clientes</p>
