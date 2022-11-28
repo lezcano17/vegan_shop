@@ -19,6 +19,7 @@ import { ReporteResumidoComponent } from './reporte-resumido/reporte-resumido.co
 import { ReporteDetalladoComponent } from './reporte-detallado/reporte-detallado.component';
 import { ConfirmationDialog } from './shared/confirm-delete.component';
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
+import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CrearProductoComponent } from './productos/crear-producto/crear-product
     ReporteResumidoComponent,
     ReporteDetalladoComponent,
     ConfirmationDialog,
-    CrearProductoComponent
+    CrearProductoComponent,
+    CrearClienteComponent
   ],
   imports: [
     BrowserModule,
