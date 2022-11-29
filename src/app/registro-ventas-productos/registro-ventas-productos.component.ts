@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalService } from '../local.service';
 import { Producto } from '../productos/productos.model';
 import { ConfirmationDialog } from '../shared/confirm-delete.component';
 
@@ -32,6 +33,10 @@ export class Productos{
 export class RegistroVentasProductosComponent {
   formGroupHeader!: FormGroup;
   formGroupProduct!: FormGroup;
+  selectedProduct!: Producto;
+
+  productos: Producto[] = [];
+
   displayedColumns: string[] = ['producto', 'cantidad', 'detalle', 'eliminar'];
   dataSource = new MatTableDataSource<Productos>();
   data: Productos[] = [{producto: new Producto(1, 'tornillo', 1098, 1),cantidad: 2,detalle: 'hola'},
@@ -39,10 +44,12 @@ export class RegistroVentasProductosComponent {
   {producto: new Producto(1, 'tornillo', 1098, 1),cantidad: 2,detalle: 'hola'}];
   dataObject = Object.assign(this.data);
   
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar ) {}
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private localStorage: LocalService) {}
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<Productos>(this.dataObject)
+    this.dataSource = new MatTableDataSource<Productos>(this.dataObject);
+    this.productos = this.localStorage.getProductos();
+    console.log(this.productos);
     this.createForms();
   }
 

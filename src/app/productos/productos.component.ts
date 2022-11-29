@@ -66,9 +66,7 @@ export class ProductosComponent {
   constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private localStorage: LocalService) {};
   
   ngOnInit(){
-    console.log(this.data)
     this.data = this.localStorage.getProductos();
-    console.log(this.data)
     this.dataObject = Object.assign(this.data)
     this.dataSource = new MatTableDataSource<Producto>(this.dataObject)
   }
