@@ -10,7 +10,7 @@ import { Producto } from '../productos/productos.model';
 import { ConfirmationDialog } from '../shared/confirm-delete.component';
 import { RegistroVentasProducto } from './registro-ventas-productos.model';
 
-export class Productos{
+export class Productos {
   producto: Producto;
   cantidad: number;
   detalle: string;
@@ -19,7 +19,7 @@ export class Productos{
     producto: Producto,
     cantidad: number,
     detalle: string,
-  ){
+  ) {
     this.producto = producto;
     this.cantidad = cantidad;
     this.detalle = detalle;
@@ -45,8 +45,8 @@ export class RegistroVentasProductosComponent {
   dataSource = new MatTableDataSource<Productos>();
   data: Productos[] = [];
   dataObject = Object.assign(this.data);
-  
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private localStorage: LocalService) {}
+
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private localStorage: LocalService) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Productos>(this.dataObject);
@@ -75,21 +75,21 @@ export class RegistroVentasProductosComponent {
 
   onSubmit() {
     const id = this.formGroupHeader.value.id
-    const fecha = this.formGroupHeader.value.nombre;
+    const fecha = this.formGroupHeader.value.fecha;
     const numeroFactura = this.formGroupHeader.value.numeroFactura;
-    const cliente = this.selectedClient;    
+    const cliente = this.selectedClient;
     const total = this.formGroupHeader.value.total;
-    const registroVenta = new RegistroVentasProducto(id,fecha,numeroFactura,cliente,total,this.data);
+    const registroVenta = new RegistroVentasProducto(id, fecha, numeroFactura, cliente, total, this.data);
     const result = this.localStorage.addRegistro(registroVenta);
-    if (result == null){
+    if (result == null) {
       alert('El ID ya existe')
     }
     this.formGroupHeader.reset();
   }
 
   openDialog(productoTotal: Productos) {
-    const dialogRef = this.dialog.open(ConfirmationDialog,{
-      data:{
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      data: {
         message: 'Esta seguro que desea eliminar este producto?',
         buttonText: {
           ok: 'Sí',
@@ -101,7 +101,7 @@ export class RegistroVentasProductosComponent {
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.data.splice(this.data.indexOf(productoTotal), 1);
-        this.formGroupHeader.patchValue({total: Number(this.formGroupHeader.get('total')?.value)-Number(productoTotal.producto.precioVenta)*Number(productoTotal.cantidad)});
+        this.formGroupHeader.patchValue({ total: Number(this.formGroupHeader.get('total')?.value) - Number(productoTotal.producto.precioVenta) * Number(productoTotal.cantidad) });
 
         this.dataSource = new MatTableDataSource<Productos>(this.dataObject)
 
@@ -115,11 +115,11 @@ export class RegistroVentasProductosComponent {
     });
   }
 
-  addElement(){
+  addElement() {
     const cantidad = this.formGroupProduct.value.cantidad;
     const detalle = this.formGroupProduct.value.totalDetalle;
-    const row = new Productos(this.selectedProduct,cantidad,detalle);
-    this.formGroupHeader.patchValue({total: Number(this.formGroupHeader.get('total')?.value)+Number(this.selectedProduct.precioVenta)*Number(cantidad)});
+    const row = new Productos(this.selectedProduct, cantidad, detalle);
+    this.formGroupHeader.patchValue({ total: Number(this.formGroupHeader.get('total')?.value) + Number(this.selectedProduct.precioVenta) * Number(cantidad) });
     this.data.push(row);
     this.dataSource = new MatTableDataSource<Productos>(this.dataObject);
     this.formGroupProduct.reset();
