@@ -21,6 +21,7 @@ import { ConfirmationDialog } from './shared/confirm-delete.component';
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
 import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component';
 import { DialogOverviewExampleDialog } from './productos/productos.component'
+import { DialogOverviewExampleDialogCliente } from './clientes/clientes.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DialogOverviewExampleDialog } from './productos/productos.component'
     ConfirmationDialog,
     CrearProductoComponent,
     CrearClienteComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    DialogOverviewExampleDialogCliente
   ],
   imports: [
     BrowserModule,
