@@ -7,10 +7,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from '../productos/productos.model';
 import { ConfirmationDialog } from '../shared/confirm-delete.component';
 
-export interface Productos{
+export class Productos{
   producto: Producto;
   cantidad: number;
   detalle: string;
+
+  constructor(
+    producto: Producto,
+    cantidad: number,
+    detalle: string,
+  ){
+    this.producto = producto;
+    this.cantidad = cantidad;
+    this.detalle = detalle;
+  }
 }
 
 @Component({
@@ -46,9 +56,9 @@ export class RegistroVentasProductosComponent {
     });
 
     this.formGroupProduct = this.formBuilder.group({
-      'Producto': [null, Validators.required],
-      'Cantidad': [null, Validators.required],
-      'Total': [null, Validators.required],
+      'producto': [null, Validators.required],
+      'cantidad': [null, Validators.required],
+      'totalDetalle': [null, Validators.required],
     });
   }
 
@@ -89,10 +99,11 @@ export class RegistroVentasProductosComponent {
   }
 
   addElement(){
-    const codigo = this.formGroupProduct.value.producto;
-    const nombre = this.formGroupProduct.value.nombre;
     const producto = this.formGroupProduct.value.producto;
-    this.data.push(producto);
+    const cantidad = this.formGroupProduct.value.cantidad;
+    const detalle = this.formGroupProduct.value.totalDetalle;
+    const row = new Productos(new Producto(1,producto,0,0),cantidad,detalle)
+    this.data.push(row);
     this.dataSource = new MatTableDataSource<Productos>(this.dataObject)
   }
 
