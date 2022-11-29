@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './clientes/clientes.model';
 import { Producto } from './productos/productos.model';
+import { RegistroVentasProducto } from './registro-ventas-productos/registro-ventas-productos.model';
 
 @Injectable({
   providedIn: 'root'
@@ -97,6 +98,26 @@ export class LocalService {
     clientes.splice(clientes.indexOf(cliente[0]),1);
     localStorage.setItem('listaClientes', JSON.stringify(clientes));
     return clientes;
+  }
+
+  getRegistros(): RegistroVentasProducto[]{
+    return JSON.parse(localStorage.getItem('registroVentas')!);
+  }
+
+  addRegistro(nuevo: RegistroVentasProducto): RegistroVentasProducto[] | null {
+    let registros: RegistroVentasProducto[] = this.getRegistros();
+    if( registros != null){
+      if(registros.some((registro) => registro.id === nuevo.id)){
+        return null;
+      }
+      registros.push(nuevo)
+      localStorage.setItem('registroVentas', JSON.stringify(registros))
+    }else{
+      let registros: RegistroVentasProducto[] = [];
+      registros.push(nuevo);
+      localStorage.setItem('registroVentas', JSON.stringify(registros))
+    }
+    return registros;
   }
 
 }

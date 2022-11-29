@@ -54,6 +54,7 @@ export class RegistroVentasProductosComponent {
     this.clientes = this.localStorage.getClientes();
     console.log(this.productos);
     this.createForms();
+    console.log(this.localStorage.getRegistros());
   }
 
   createForms() {
@@ -79,6 +80,10 @@ export class RegistroVentasProductosComponent {
     const cliente = this.selectedClient;    
     const total = this.formGroupHeader.value.total;
     const registroVenta = new RegistroVentasProducto(id,fecha,numeroFactura,cliente,total,this.data);
+    const result = this.localStorage.addRegistro(registroVenta);
+    if (result == null){
+      alert('El ID ya existe')
+    }
     this.formGroupHeader.reset();
   }
 
