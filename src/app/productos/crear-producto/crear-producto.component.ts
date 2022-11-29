@@ -27,6 +27,8 @@ export class CrearProductoComponent implements OnInit {
       'precioVenta': [null, Validators.required],
       'existencia': [null, Validators.required]
     });
+
+    
   }
 
   onSubmit() {

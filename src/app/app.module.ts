@@ -19,7 +19,8 @@ import { ReporteResumidoComponent } from './reporte-resumido/reporte-resumido.co
 import { ReporteDetalladoComponent } from './reporte-detallado/reporte-detallado.component';
 import { ConfirmationDialog } from './shared/confirm-delete.component';
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
-import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component'
+import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component';
+import { DialogOverviewExampleDialog } from './productos/productos.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.co
     ReporteDetalladoComponent,
     ConfirmationDialog,
     CrearProductoComponent,
-    CrearClienteComponent
+    CrearClienteComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
