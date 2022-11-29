@@ -1,9 +1,16 @@
 <div class="container">
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
-        <mat-form-field class="form-element">
-            <input matInput placeholder="RUC" formControlName="ruc" required>
-            <input matInput placeholder="Nombre y Apellido" formControlName="nombreApellido" required>
-            <input matInput placeholder="Email" formControlName="email" required>
+        <mat-form-field appearance="fill" class="form-element">
+            <mat-label>RUC</mat-label>
+            <input matInput formControlName="ruc" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-element">
+            <mat-label>Nombre y Apellido</mat-label>
+            <input matInput formControlName="nombreApellido" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-element">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
         </mat-form-field>
 
         <div class="form-element">
