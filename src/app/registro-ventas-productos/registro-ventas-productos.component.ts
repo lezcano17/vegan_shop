@@ -121,7 +121,8 @@ export class RegistroVentasProductosComponent {
     const row = new Productos(this.selectedProduct,cantidad,detalle);
     this.formGroupHeader.patchValue({total: Number(this.formGroupHeader.get('total')?.value)+Number(this.selectedProduct.precioVenta)*Number(cantidad)});
     this.data.push(row);
-    this.dataSource = new MatTableDataSource<Productos>(this.dataObject)
+    this.dataSource = new MatTableDataSource<Productos>(this.dataObject);
+    this.formGroupProduct.reset();
   }
 
 }
