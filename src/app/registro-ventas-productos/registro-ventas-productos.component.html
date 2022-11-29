@@ -25,8 +25,8 @@
 <div class="container">
   <form [formGroup]="formGroupProduct" (ngSubmit)="addElement()" class="form producto">
     <mat-form-field class="form-element">
-        <mat-select placeholder="Producto" formControlName="producto" required>
-            <mat-option *ngFor="let producto of productos" [value]="producto.nombre">
+        <mat-select placeholder="Producto" [(ngModel)]="selectedProduct" formControlName="producto" required>
+            <mat-option *ngFor="let producto of productos" [value]="producto">
               {{producto.nombre}}
             </mat-option>
         </mat-select>

@@ -39,9 +39,7 @@ export class RegistroVentasProductosComponent {
 
   displayedColumns: string[] = ['producto', 'cantidad', 'detalle', 'eliminar'];
   dataSource = new MatTableDataSource<Productos>();
-  data: Productos[] = [{producto: new Producto(1, 'tornillo', 1098, 1),cantidad: 2,detalle: 'hola'},
-  {producto: new Producto(1, 'tornillo', 1098, 1),cantidad: 2,detalle: 'hola'},
-  {producto: new Producto(1, 'tornillo', 1098, 1),cantidad: 2,detalle: 'hola'}];
+  data: Productos[] = [];
   dataObject = Object.assign(this.data);
   
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private localStorage: LocalService) {}
@@ -106,10 +104,9 @@ export class RegistroVentasProductosComponent {
   }
 
   addElement(){
-    const producto = this.formGroupProduct.value.producto;
     const cantidad = this.formGroupProduct.value.cantidad;
     const detalle = this.formGroupProduct.value.totalDetalle;
-    const row = new Productos(new Producto(1,producto,0,0),cantidad,detalle)
+    const row = new Productos(this.selectedProduct,cantidad,detalle);
     this.data.push(row);
     this.dataSource = new MatTableDataSource<Productos>(this.dataObject)
   }
