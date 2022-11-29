@@ -10,7 +10,11 @@
       <input matInput placeholder="Numero de factura" formControlName="numeroFactura" required>
     </mat-form-field>
     <mat-form-field class="form-element">
-      <input matInput placeholder="Cliente" formControlName="cliente" required>
+        <mat-select placeholder="Cliente" [(ngModel)]="selectedClient" formControlName="cliente" required>
+            <mat-option *ngFor="let cliente of clientes" [value]="cliente">
+              {{cliente.nombreApellido}}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
     <mat-form-field class="form-element">
       <input matInput placeholder="Total" formControlName="total" required>
