@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -75,7 +76,7 @@ export class RegistroVentasProductosComponent {
 
   onSubmit() {
     const id = this.formGroupHeader.value.id
-    const fecha = this.formGroupHeader.value.fecha;
+    const fecha = formatDate(this.formGroupHeader.value.fecha, 'dd-MM-YYYY', 'es-ES');
     const numeroFactura = this.formGroupHeader.value.numeroFactura;
     const cliente = this.selectedClient;
     const total = this.formGroupHeader.value.total;
