@@ -4,17 +4,19 @@
       <input matInput placeholder="ID" formControlName="id" required>
     </mat-form-field>
     <mat-form-field class="form-element">
-      <input matInput placeholder="Fecha" formControlName="fecha" required>
+      <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="fecha" required>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="form-element">
       <input matInput placeholder="Numero de factura" formControlName="numeroFactura" required>
     </mat-form-field>
     <mat-form-field class="form-element">
-        <mat-select placeholder="Cliente" [(ngModel)]="selectedClient" formControlName="cliente" required>
-            <mat-option *ngFor="let cliente of clientes" [value]="cliente">
-              {{cliente.nombreApellido}}
-            </mat-option>
-        </mat-select>
+      <mat-select placeholder="Cliente" [(ngModel)]="selectedClient" formControlName="cliente" required>
+        <mat-option *ngFor="let cliente of clientes" [value]="cliente">
+          {{cliente.nombreApellido}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="form-element">
       <input matInput placeholder="Total" formControlName="total" required>
@@ -29,11 +31,11 @@
 <div class="container">
   <form [formGroup]="formGroupProduct" (ngSubmit)="addElement()" class="form producto">
     <mat-form-field class="form-element">
-        <mat-select placeholder="Producto" [(ngModel)]="selectedProduct" formControlName="producto" required>
-            <mat-option *ngFor="let producto of productos" [value]="producto">
-              {{producto.nombre}}
-            </mat-option>
-        </mat-select>
+      <mat-select placeholder="Producto" [(ngModel)]="selectedProduct" formControlName="producto" required>
+        <mat-option *ngFor="let producto of productos" [value]="producto">
+          {{producto.nombre}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="form-element">
       <input matInput placeholder="Cantidad" formControlName="cantidad" required>

@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -23,6 +25,8 @@ import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.co
 import { DialogOverviewExampleDialog } from './productos/productos.component'
 import { DialogOverviewExampleDialogCliente } from './clientes/clientes.component'
 import { MatIconModule } from '@angular/material/icon';
+
+registerLocaleData(localeEs, 'es-ES');
 
 @NgModule({
   declarations: [
@@ -51,7 +55,7 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
