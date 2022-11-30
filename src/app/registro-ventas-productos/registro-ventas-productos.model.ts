@@ -3,7 +3,7 @@ import { Productos } from "./registro-ventas-productos.component";
 
 export class RegistroVentasProducto {
     id: number;
-    fecha: string;
+    fecha: Date;
     numeroFactura: number;
     cliente: Cliente;
     total: number;
@@ -11,7 +11,7 @@ export class RegistroVentasProducto {
 
     constructor(
         id: number,
-        fecha: string,
+        fecha: Date,
         numeroFactura: number,
         cliente: Cliente,
         total: number,

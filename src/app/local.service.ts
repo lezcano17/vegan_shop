@@ -100,8 +100,8 @@ export class LocalService {
     return clientes;
   }
 
-  getRegistros(): RegistroVentasProducto[]{
-    return JSON.parse(localStorage.getItem('registroVentas')!);
+getRegistros(): RegistroVentasProducto[]{
+  return JSON.parse(localStorage.getItem('registroVentas')!);
   }
 
   addRegistro(nuevo: RegistroVentasProducto): RegistroVentasProducto[] | null {

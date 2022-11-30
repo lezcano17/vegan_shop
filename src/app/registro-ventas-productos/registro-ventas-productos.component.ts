@@ -76,7 +76,7 @@ export class RegistroVentasProductosComponent {
 
   onSubmit() {
     const id = this.formGroupHeader.value.id
-    const fecha = formatDate(this.formGroupHeader.value.fecha, 'dd-MM-YYYY', 'es-ES');
+    const fecha = this.formGroupHeader.value.fecha
     const numeroFactura = this.formGroupHeader.value.numeroFactura;
     const cliente = this.selectedClient;
     const total = this.formGroupHeader.value.total;
