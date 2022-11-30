@@ -17,6 +17,24 @@
       </div>
     </form>
   </div>
+
+
+<div class="container">
+  <p>Filtrar por Producto</p>
+  <form [formGroup]="formGroupProduct" (ngSubmit)="filtrarProducto()" class="form producto">
+    <mat-form-field class="form-element">
+      <mat-select placeholder="Producto" [(ngModel)]="selectedProduct" formControlName="producto" required>
+        <mat-option *ngFor="let producto of productos" [value]="producto">
+          {{producto.nombre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button"
+        [disabled]="!formGroupProduct.valid">Filtrar</button>
+    </div>
+  </form>
+</div>
     
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="container mat-elevation-z8">
         <ng-container matColumnDef="cliente">

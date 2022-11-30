@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { LocalService } from '../local.service';
+import { Producto } from '../productos/productos.model';
 import { RegistroVentasProducto } from '../registro-ventas-productos/registro-ventas-productos.model';
 
 @Component({
@@ -26,6 +27,9 @@ export class ReporteDetalladoComponent {
   dataSource = new MatTableDataSource<RegistroVentasProducto>();
   data: RegistroVentasProducto[] = [];
   dataObject = Object.assign(this.data);
+  formGroupProduct!: FormGroup;
+  productos: Producto[] = [];
+  selectedProduct!: Producto;
 
   formGroupHeader!: FormGroup;
 
@@ -39,7 +43,9 @@ export class ReporteDetalladoComponent {
   ngOnInit() {
     this.data = this.localStorage.getRegistros();
     this.dataObject = Object.assign(this.data);
+    this.productos = this.localStorage.getProductos();
     this.createForms();
+    
     this.dataSource = new MatTableDataSource<RegistroVentasProducto>(this.dataObject);
   }
 
@@ -47,6 +53,10 @@ export class ReporteDetalladoComponent {
     this.formGroupHeader = this.formBuilder.group({
       'fechaDesde': [null, Validators.required],
       'fechaHasta': [null, Validators.required],
+    });
+
+    this.formGroupProduct = this.formBuilder.group({
+      'producto': [null, Validators.required],
     });
   }
 
@@ -79,6 +89,28 @@ export class ReporteDetalladoComponent {
       this.dataObject = Object.assign(this.data);
       this.dataSource = new MatTableDataSource<RegistroVentasProducto>(this.dataObject);
 
+    }
+
+    filtrarProducto(){
+      let elemento: any;
+      let copia: RegistroVentasProducto[] = [];
+      for (let i = 0; i < this.data.length; i++){
+        elemento = this.data[i];
+        console.log(this.selectedProduct.nombre)
+        
+        for(let k = 0; k < elemento.productosComprados.length; k++){
+          console.log(elemento.productosComprados[k].producto.nombre)
+          if (elemento.productosComprados[k].producto.nombre === this.selectedProduct.nombre){
+            if(!copia.includes(this.data[i]))
+            copia.push(this.data[i]);
+          }
+        }
+        
+      }
+      this.data = copia
+      console.log(copia)
+      this.dataObject = Object.assign(this.data);
+      this.dataSource = new MatTableDataSource<RegistroVentasProducto>(this.dataObject);
     }
 
 }
