@@ -22,6 +22,7 @@ import { CrearProductoComponent } from './productos/crear-producto/crear-product
 import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component';
 import { DialogOverviewExampleDialog } from './productos/productos.component'
 import { DialogOverviewExampleDialogCliente } from './clientes/clientes.component'
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DialogOverviewExampleDialogCliente } from './clientes/clientes.componen
     MatTableModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatIconModule,
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
