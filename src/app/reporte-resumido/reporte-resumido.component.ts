@@ -66,6 +66,4 @@ export class ReporteResumidoComponent {
       this.dataSource = new MatTableDataSource<RegistroVentasProducto>(this.dataObject);
 
     }
-
-
   }

@@ -55,7 +55,7 @@ registerLocaleData(localeEs, 'es-ES');
     ReactiveFormsModule,
     MatDialogModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-ES' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
