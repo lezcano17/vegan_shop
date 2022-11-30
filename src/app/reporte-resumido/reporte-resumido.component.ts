@@ -16,8 +16,8 @@ export class ReporteResumidoComponent {
   dataObject = Object.assign(this.data)
   formGroupHeader!: FormGroup;
 
-  fechaDesde!: Date;
-  fechaHasta!: Date;
+  fechaDesde: any;
+  fechaHasta: any;
   rucCliente: any;
 
   constructor(private localStorage: LocalService, private formBuilder: FormBuilder) { }
@@ -37,12 +37,35 @@ export class ReporteResumidoComponent {
   }
 
   onSubmit(){
-    const fechaDesde = this.formGroupHeader.value.fechaDesde;
-    const fechaHasta = this.formGroupHeader.value.fechaHasta;
-    console.log(typeof(fechaDesde))
-    console.log(fechaHasta)
+    this.fechaDesde = this.formGroupHeader.value.fechaDesde;
+    this.fechaHasta = this.formGroupHeader.value.fechaHasta;
+    this.fechaDesde = this.fechaDesde.getTime();
+    this.fechaHasta = this.fechaHasta.getTime();
+
+    if (this.fechaDesde > this.fechaHasta) {
+      alert('Error en la fecha')
+    }
+
+    let elemento: any;
+    let copia = [];
+
+    for(let i = 0; i < this.data.length; i++){
+      elemento = this.data[i]
+      let date1 = new Date(elemento.fecha).getTime();
+      let date2 = new Date(this.fechaDesde).getTime();
+      let date3 = new Date(this.fechaHasta).getTime();
+      console.log(date1, date2, date3)
+
+      if (date1 >= date2 && date1 <= date3)
+        copia.push(this.data[i]);
+      }
+
+      this.data = copia
+      console.log(copia)
+      this.dataObject = Object.assign(this.data);
+      this.dataSource = new MatTableDataSource<RegistroVentasProducto>(this.dataObject);
+
+    }
+
+
   }
-
-
-
-}

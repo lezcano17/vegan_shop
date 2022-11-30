@@ -1,3 +1,23 @@
+<div class="container">
+    <h1>Filtros de busqueda</h1>
+    <form [formGroup]="formGroupHeader" (ngSubmit)="onSubmit()" class="form header">
+      <mat-form-field class="form-element">
+        <input matInput [matDatepicker]="picker1" placeholder="fechaDesde" formControlName="fechaDesde" required>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <input matInput [matDatepicker]="picker2" placeholder="fechaHasta" formControlName="fechaHasta" required>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button"
+          [disabled]="!formGroupHeader.valid">Filtrar</button>
+      </div>
+    </form>
+  </div>
+    
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="container mat-elevation-z8">
         <ng-container matColumnDef="cliente">
             <th mat-header-cell *matHeaderCellDef> Cliente </th>
